@@ -16,9 +16,11 @@ import javax.validation.Valid
 @RequestMapping("/v1/document")
 class DocumentController {
 
+    @Autowired
+    lateinit var documentService: DocumentService
 
     @GetMapping("/{from}/{to}/{text}")
     fun currencyConverter(@Valid @PathVariable from: String, @Valid @PathVariable to: String, @Valid @PathVariable text: String) {
-        //TODO
+        documentService.translate(from, to, text)
     }
 }
