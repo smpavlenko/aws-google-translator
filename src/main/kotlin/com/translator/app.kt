@@ -20,8 +20,8 @@ open class Application : WebMvcConfigurerAdapter() {
     @Bean
     open fun docket(): Docket {
         return Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage(this.javaClass.`package`.name)).paths(PathSelectors
-                .any())
+                .apis(RequestHandlerSelectors.basePackage(this.javaClass.`package`.name))
+                .paths(PathSelectors.any())
                 .build()
     }
 
