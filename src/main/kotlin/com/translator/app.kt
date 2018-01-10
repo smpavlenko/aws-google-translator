@@ -24,7 +24,6 @@ open class Application : WebMvcConfigurerAdapter() {
                 .paths(PathSelectors.any())
                 .build()
     }
-
 }
 
 fun main(args: Array<String>) {
