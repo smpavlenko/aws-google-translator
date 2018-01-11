@@ -27,7 +27,6 @@ interface DocumentService {
 object DocumentServiceImpl : DocumentService {
 
     override fun translate(from: String, to: String, text: String): String {
-
         val httpPost = HttpPost("https://translate.googleapis.com/translate_a/single")
         val nvps = ArrayList<NameValuePair>()
         nvps.add(BasicNameValuePair("client", "gtx"))
@@ -44,6 +43,11 @@ object DocumentServiceImpl : DocumentService {
         response.entity.writeTo(out)
         val responseString = out.toString()
 
-        return responseString
+        return parseResponse(responseString)
     }
+}
+
+fun parseResponse(response: String?): String {
+    //TODO
+    return ""
 }
