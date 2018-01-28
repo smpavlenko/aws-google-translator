@@ -48,6 +48,7 @@ object DocumentServiceImpl : DocumentService {
 }
 
 fun parseResponse(response: String?): String {
+    if (response == null || response.isBlank()) return ""
     //TODO
     return ""
 }
