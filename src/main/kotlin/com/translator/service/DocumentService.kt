@@ -49,6 +49,10 @@ object DocumentServiceImpl : DocumentService {
 
 fun parseResponse(response: String?): String {
     if (response == null || response.isBlank()) return ""
+    val results = response.split("],[")
+    var result = results.map {
+        it.substring(it.indexOf("\"") + 1, it.indexOf("\",\""))
+    }
     //TODO
-    return ""
+    return result.joinToString("")
 }
