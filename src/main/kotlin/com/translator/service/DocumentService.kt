@@ -53,6 +53,5 @@ fun parseResponse(response: String?): String {
     var result = results.map {
         it.substring(it.indexOf("\"") + 1, it.indexOf("\",\""))
     }
-    //TODO
     return result.joinToString("")
 }
