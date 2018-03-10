@@ -6,8 +6,8 @@ logging.level:
   io.swagger.models.parameters.AbstractSerializableParameter: ERROR
 
 info.app.name:
-  Spring Sample Application
+  AWS Google Translator
 info.app.description:
-  This is my first spring boot application
+  This is a simple RESTful microservice which thanslates text using Google Translate API
 info.app.version:
-  0.0.1-SNAPSHOT
+  @project.version@
