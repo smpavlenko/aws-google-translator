@@ -4,3 +4,10 @@ server:
 
 logging.level:
   io.swagger.models.parameters.AbstractSerializableParameter: ERROR
+
+info.app.name:
+  Spring Sample Application
+info.app.description:
+  This is my first spring boot application
+info.app.version:
+  0.0.1-SNAPSHOT
