@@ -1,0 +1,10 @@
+AWS Preparation
+1.
+Cloud computing is the on-demand delivery of IT resources and applications via the Internet with pay-as-you-go pricing.
+Six advantages of Cloud computing
+  - Variable vs. Capital Expense
+  - Economies of Scale
+  - Stop Guessing Capacity
+  - Increase Speed and Agility
+  - Focus on Business Differentiators
+  - Go Global in Minutes
