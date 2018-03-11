@@ -2,3 +2,9 @@
 galaxy_info:
   author: smpavlenko
   description: Java8 from Oracle
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - trusty
