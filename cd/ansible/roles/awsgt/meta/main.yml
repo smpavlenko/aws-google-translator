@@ -1,0 +1,10 @@
+---
+galaxy_info:
+  author: smpavlenko
+  description: Ansible role to install AWS Google Translator application
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - trusty

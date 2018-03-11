@@ -1,0 +1,8 @@
+---
+- name: Create awsgt user group
+  become: true
+  group: name=awsgt state=present
+
+- name: Create awsgt user
+  become: true
+  user: name=awsgt group=awsgt shell=/bin/bash
