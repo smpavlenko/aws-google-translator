@@ -2,9 +2,58 @@ AWS Preparation
 1.
 Cloud computing is the on-demand delivery of IT resources and applications via the Internet with pay-as-you-go pricing.
 Six advantages of Cloud computing
-  - Variable vs. Capital Expense
-  - Economies of Scale
-  - Stop Guessing Capacity
-  - Increase Speed and Agility
-  - Focus on Business Differentiators
-  - Go Global in Minutes
+    - Variable vs. Capital Expense
+    - Economies of Scale
+    - Stop Guessing Capacity
+    - Increase Speed and Agility
+    - Focus on Business Differentiators
+    - Go Global in Minutes
+
+4.
+Amazon VPC
+    - per one region
+    - up to 5 VPC per region
+Subnets - a segment of an Amazon VPC
+    - per one az
+    - public(has route to IGW), private(doesn't have route to IGW), or VPN-only(has route only to VPG)
+    - every vpc should have at least two - private and public
+    - up to 200 subnets per VPC
+    - trafric is routed between subnets by default (use ACL to prevent)
+Route Tables - a logical construct within an Amazon VPC that contains a set of rules (called routes) that are applied to the subnet and used to determine where network traffic is directed
+    - Main Route Tables/Custom Route Tables
+    - one Route Table can be attached to multiple subnets
+    - each subnet can be attached to one Route Table
+Internet Gateways - is a horizontally scaled, redundant, and highly available Amazon VPC component that allows communication between instances in your Amazon VPC and the Internet
+Dynamic Host Configuration Protocol - allows you to direct Amazon EC2 host name assignment to your own resources
+Elastic IP Address
+    - specific to a region
+    - costs money even if not used
+Elastic Network Interface - a virtual network interface that you can attach to an instance in an Amazon VPC
+VPC endpoint - enables to create a private connection between your Amazon VPC and another AWS service
+    - enables to privately connect your VPC to supported AWS services and VPC endpoint services powered by PrivateLink without requiring an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection
+    - there are two types of VPC endpoints: Interface, Gateway
+Peering conection - a networking connection between two Amazon VPCs that enables instances in either Amazon VPC to communicate with each other as if they are within the same network
+    - cannot create a peering connection between Amazon VPCs that have matching or overlapping CIDR blocks
+    - do not support transitive routing
+    - VPCs can be in different regions
+    - two VPCs could have only one peering conection
+Security Group - virtual stateful firewall that controls inbound and outbound network traffic to AWS resources and Amazon EC2 instances
+    - default security group allows communication between all resources within the security group, allows all outbound traffic, and denies all other traffic
+    - you may not delete the default security group
+    - up to 500 security groups for each Amazon VPC
+    - up to 50 inbound and 50 outbound rules to each security group
+    - can specify allow rules, but not deny rules
+    - security groups are stateful. This means that responses to allowed inbound traffic are allowed to flow outbound regardless of outbound rules and vice versa
+Network Access Control List - another layer of security that acts as a stateless firewall on a subnet level
+    - every subnet must be associated with a network ACL
+    - supports allow rules and deny rules
+    - Stateless: Return traffic must be explicitly allowed by rules
+    - automatically applied to all instances in the associated subnets
+    - one Network ACL can be attached to multiple subnets
+    - each subnet can be attached to one Network ACL
+NAT Instance - an Amazon Linux Amazon Machine Image (AMI) that is designed to accept traffic from instances within a private subnet, translate the source IP address to the public IP address of the NAT instance, and forward the traffic to the IGW
+NAT Gateway - managed resource that is designed to operate just like a NAT instance
+    - within an Availability Zone
+Virtual Private Gateway - the VPN concentrator on the AWS side of the VPN connection between the two networks
+Customer Gateway - represents a physical device or a software application on the customer’s side of the VPN connection
+Virtual Private Network

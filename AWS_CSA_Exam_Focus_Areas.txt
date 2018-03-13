@@ -2,7 +2,7 @@ AWS CSA Exam Focus Areas
 
 1) Designing high available, cost-efficient, fault-tolerant, scalable systems 60% ()
 2) Implementation/Deployment 10% ()
-3) Data secutity 20% ()
+3) Data security 20% ()
 4) Troubleshooting 10% ()
 
 1) Identity and Access Management (4 to 7)
@@ -15,19 +15,20 @@ AWS CSA Exam Focus Areas
 8) Managed Services (2 to 4) SQS, SWS, SNS
 9) Directory Services and Federation (2 to 3)
 10) All other services (2 to 3) CloudWatch, CloudTrail, Lambda, Data Migration Service, Aurora, Elastic Times Coder, Kenesis, OpsWork, Elastic FileSystem
-11) White Papers (6 to 8) AWS, Security, Risc and Compliance, Storage options in the cloud, Architecting for AWS best practices
+11) White Papers (6 to 8) AWS, Security, Risk and Compliance, Storage options in the cloud, Architecting for AWS best
+practices
 
 
 
 Security Groups - Mandatory firewall for EC2 instances
 - Applies at all inbound and outbound traffic at instance level
-- Statefull filters
+- Stateful filters
 
-Network Access Controll Lists
+Network Access Control Lists
 - Applies at all inbound and outbound traffic from a subnet in VPC
-- Stateless trafic filters
+- Stateless traffic filters
 
-Storage Oprions
+Storage Options
 - Amazon EC2 Instance Store
 - Amazon Elastic Block Store (EBS)
 - Amazon Elastic File System (EFS)
