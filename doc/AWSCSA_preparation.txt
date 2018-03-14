@@ -18,7 +18,7 @@ Subnets - a segment of an Amazon VPC
     - public(has route to IGW), private(doesn't have route to IGW), or VPN-only(has route only to VPG)
     - every vpc should have at least two - private and public
     - up to 200 subnets per VPC
-    - trafric is routed between subnets by default (use ACL to prevent)
+    - traffic is routed between subnets by default (use ACL to prevent)
 Route Tables - a logical construct within an Amazon VPC that contains a set of rules (called routes) that are applied to the subnet and used to determine where network traffic is directed
     - Main Route Tables/Custom Route Tables
     - one Route Table can be attached to multiple subnets
@@ -32,11 +32,12 @@ Elastic Network Interface - a virtual network interface that you can attach to a
 VPC endpoint - enables to create a private connection between your Amazon VPC and another AWS service
     - enables to privately connect your VPC to supported AWS services and VPC endpoint services powered by PrivateLink without requiring an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection
     - there are two types of VPC endpoints: Interface, Gateway
-Peering conection - a networking connection between two Amazon VPCs that enables instances in either Amazon VPC to communicate with each other as if they are within the same network
+Peering connection - a networking connection between two Amazon VPCs that enables instances in either Amazon VPC to
+communicate with each other as if they are within the same network
     - cannot create a peering connection between Amazon VPCs that have matching or overlapping CIDR blocks
     - do not support transitive routing
     - VPCs can be in different regions
-    - two VPCs could have only one peering conection
+    - two VPCs could have only one peering connection
 Security Group - virtual stateful firewall that controls inbound and outbound network traffic to AWS resources and Amazon EC2 instances
     - default security group allows communication between all resources within the security group, allows all outbound traffic, and denies all other traffic
     - you may not delete the default security group
