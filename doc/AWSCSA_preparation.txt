@@ -57,3 +57,8 @@ NAT Gateway - managed resource that is designed to operate just like a NAT insta
 Virtual Private Gateway - the VPN concentrator on the AWS side of the VPN connection between the two networks
 Customer Gateway - represents a physical device or a software application on the customer’s side of the VPN connection
 Virtual Private Network
+
+10.
+Amazon ElastiCache
+    Memcached - partitioned across multiple nodes. Can scale horizontally. No snapshots supported
+    Redis - support the concept of replication groups to scale horizontally. Supports both automated and manual snapshots
