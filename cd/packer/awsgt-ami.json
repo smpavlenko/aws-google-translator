@@ -1,8 +1,26 @@
 {
   "variables": {
+    "region": "eu-west-1",
+    "base_ami": "ubuntu-xenial-16.04-amd64-server-*",
+    "app_version": "@project.version@"
   },
   "builders": [
     {
+      "name": "awsgt-ami",
+      "type": "amazon-ebs",
+      "ami_name": "AWSGT_{{user `ami_version`| clean_ami_name}}",
+      "region": "{{user `region`}}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "{{user `base_ami`}}",
+          "root-device-type": "ebs"
+        },
+        "most_recent": true
+      },
+      "ami_regions": [
+        "{{user `region`}}"
+      ]
     }
   ],
   "provisioners": [
