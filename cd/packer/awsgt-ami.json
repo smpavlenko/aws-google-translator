@@ -2,7 +2,8 @@
   "variables": {
     "region": "eu-west-1",
     "base_ami": "ubuntu-xenial-16.04-amd64-server-*",
-    "app_version": "@project.version@"
+    "app_version": "@project.version@",
+    "tag_name": "AWSGT"
   },
   "builders": [
     {
@@ -20,7 +21,15 @@
       },
       "ami_regions": [
         "{{user `region`}}"
-      ]
+      ],
+      "run_tags": {
+        "Name": "{{user `tag_name`}}"
+        "Version": "{{user `app_version`}}"
+      },
+      "tags": {
+        "Name": "{{user `tag_name`}}",
+        "Version": "{{user `app_version`}}"
+      }
     }
   ],
   "provisioners": [
