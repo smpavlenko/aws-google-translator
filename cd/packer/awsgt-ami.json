@@ -23,7 +23,7 @@
         "{{user `region`}}"
       ],
       "run_tags": {
-        "Name": "{{user `tag_name`}}"
+        "Name": "{{user `tag_name`}}",
         "Version": "{{user `app_version`}}"
       },
       "tags": {
