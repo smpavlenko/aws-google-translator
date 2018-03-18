@@ -27,7 +27,7 @@ Resources:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref AWSGTVPC
-      CidrBlock: 10.0.0.0/26"
+      CidrBlock: 10.0.0.0/26
       AvailabilityZone: !Select
         - '0'
         - !GetAZs ''
@@ -41,7 +41,7 @@ Resources:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref AWSGTVPC
-      CidrBlock: 10.0.64.0/26"
+      CidrBlock: 10.0.0.64/26
       AvailabilityZone: !Select
         - '1'
         - !GetAZs ''
@@ -97,15 +97,15 @@ Resources:
 
 Outputs:
   VPC:
-    Description: AWS Google Translate VPC
+    Description: AWS GT VPC
     Value: !Ref AWSGTVPC
   AZ0:
-    Description: Availability Zone 0
+    Description: AWS GT Availability Zone 0
     Value: !GetAtt
       - AWSGTPublicSubnet0
       - AvailabilityZone
   AZ1:
-    Description: Availability Zone 1
+    Description: AWS GT Availability Zone 1
     Value: !GetAtt
       - AWSGTPublicSubnet1
       - AvailabilityZone
