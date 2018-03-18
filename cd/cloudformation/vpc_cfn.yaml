@@ -95,4 +95,18 @@ Resources:
       SubnetId: !Ref AWSGTPublicSubnet1
       RouteTableId: !Ref PublicRouteTable
 
+Outputs:
+  VPC:
+    Description: AWS Google Translate VPC
+    Value: !Ref AWSGTVPC
+  AZ0:
+    Description: Availability Zone 0
+    Value: !GetAtt
+      - AWSGTPublicSubnet0
+      - AvailabilityZone
+  AZ1:
+    Description: Availability Zone 1
+    Value: !GetAtt
+      - AWSGTPublicSubnet1
+      - AvailabilityZone
 
