@@ -7,7 +7,7 @@ Parameters:
   Project:
     Description: Project Name Tag
     Type: String
-    Value: AWSGT
+    Default: AWSGT
 
 
 Resources:
@@ -23,7 +23,7 @@ Resources:
       - Key: Project
         Value: !Ref Project
 
-  AWSGTSubnet0:
+  AWSGTPublicSubnet0:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref AWSGTVPC
@@ -33,11 +33,11 @@ Resources:
         - !GetAZs ''
       Tags:
         - Key: Name
-          Value: AWS GT Subnet 0
+          Value: AWS GT Public Subnet 0
         - Key: Project
           Value: !Ref Project
 
-  AWSGTSubnet1:
+  AWSGTPublicSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref AWSGTVPC
@@ -47,21 +47,7 @@ Resources:
         - !GetAZs ''
       Tags:
         - Key: Name
-          Value: AWS GT Subnet 1
-        - Key: Project
-          Value: !Ref Project
-
-  AWSGTSubnet2:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref AWSGTVPC
-      CidrBlock: 10.0.128.0/26"
-      AvailabilityZone: !Select
-        - '2'
-        - !GetAZs ''
-      Tags:
-        - Key: Name
-          Value: AWS GT Subnet 2
+          Value: AWS GT Public Subnet 1
         - Key: Project
           Value: !Ref Project
 
@@ -100,6 +86,13 @@ Resources:
   PublicSubnetRouteTableAssociation0:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
-      SubnetId: !Ref AWSGTSubnet0
+      SubnetId: !Ref AWSGTPublicSubnet0
       RouteTableId: !Ref PublicRouteTable
+
+  PublicSubnetRouteTableAssociation1:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref AWSGTPublicSubnet1
+      RouteTableId: !Ref PublicRouteTable
+
 
