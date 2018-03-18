@@ -79,3 +79,27 @@ Resources:
     Properties:
       VpcId: !Ref AWSGTVPC
       InternetGatewayId: !Ref AWSGTInternetGateway
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref AWSGTVPC
+      Tags:
+      - Key: Name
+        Value: AWS GT Public Route Table
+      - Key: Project
+        Value: !Ref Project
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref AWSGTInternetGateway
+
+  PublicSubnetRouteTableAssociation0:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref AWSGTSubnet0
+      RouteTableId: !Ref PublicRouteTable
+
