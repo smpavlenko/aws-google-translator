@@ -1,7 +1,7 @@
 ---
 AWSTemplateFormatVersion: 2010-09-09
 
-Description: AWS Google Translator VPC
+Description: AWS Google Translator VPC and subroutines
 
 Parameters:
   Project:
@@ -99,14 +99,34 @@ Outputs:
   VPC:
     Description: AWS GT VPC
     Value: !Ref AWSGTVPC
+    Export:
+      Name: !Sub "${AWS::StackName}-AWSGT-VPC"
+
+  Subnet0:
+    Description: AWS GT Public Subnet0
+    Value: !Ref AWSGTPublicSubnet0
+    Export:
+      Name: !Sub "${AWS::StackName}-AWSGT-Subnet0"
+
+  Subnet1:
+    Description: AWS GT Public Subnet1
+    Value: !Ref AWSGTPublicSubnet1
+    Export:
+      Name: !Sub "${AWS::StackName}-AWSGT-Subnet1"
+
   AZ0:
     Description: AWS GT Availability Zone 0
     Value: !GetAtt
       - AWSGTPublicSubnet0
       - AvailabilityZone
+    Export:
+      Name: !Sub "${AWS::StackName}-AWSGT-AZ0"
+
   AZ1:
     Description: AWS GT Availability Zone 1
     Value: !GetAtt
       - AWSGTPublicSubnet1
       - AvailabilityZone
+    Export:
+      Name: !Sub "${AWS::StackName}-AWSGT-AZ1"
 
