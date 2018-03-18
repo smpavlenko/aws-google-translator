@@ -1,0 +1,81 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: AWS Google Translator VPC
+
+Parameters:
+  Project:
+    Description: Project Name Tag
+    Type: String
+    Value: AWSGT
+
+
+Resources:
+  AWSGTVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/24
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+      - Key: Name
+        Value: AWS GT VPC
+      - Key: Project
+        Value: !Ref Project
+
+  AWSGTSubnet0:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref AWSGTVPC
+      CidrBlock: 10.0.0.0/26"
+      AvailabilityZone: !Select
+        - '0'
+        - !GetAZs ''
+      Tags:
+        - Key: Name
+          Value: AWS GT Subnet 0
+        - Key: Project
+          Value: !Ref Project
+
+  AWSGTSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref AWSGTVPC
+      CidrBlock: 10.0.64.0/26"
+      AvailabilityZone: !Select
+        - '1'
+        - !GetAZs ''
+      Tags:
+        - Key: Name
+          Value: AWS GT Subnet 1
+        - Key: Project
+          Value: !Ref Project
+
+  AWSGTSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref AWSGTVPC
+      CidrBlock: 10.0.128.0/26"
+      AvailabilityZone: !Select
+        - '2'
+        - !GetAZs ''
+      Tags:
+        - Key: Name
+          Value: AWS GT Subnet 2
+        - Key: Project
+          Value: !Ref Project
+
+  AWSGTInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+      - Key: Name
+        Value: AWS GT Internet Gateway
+      - Key: Project
+        Value: !Ref Project
+
+  AWSGTAttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref AWSGTVPC
+      InternetGatewayId: !Ref AWSGTInternetGateway
