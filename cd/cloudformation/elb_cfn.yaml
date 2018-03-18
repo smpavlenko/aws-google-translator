@@ -1,0 +1,15 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: AWS Google Translator ELB and subroutines
+
+Parameters:
+  Project:
+    Description: Project Name Tag
+    Type: String
+    Default: AWSGT
+  VPCStackName:
+    Description: VPC STACK Name
+    Type: String
+
+Resources:
