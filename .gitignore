@@ -2,3 +2,9 @@
 *.iml
 
 target/*
+.idea/workspace.xml
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
