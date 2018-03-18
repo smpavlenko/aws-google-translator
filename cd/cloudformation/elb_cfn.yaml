@@ -13,3 +13,26 @@ Parameters:
     Type: String
 
 Resources:
+ SGELBAWSGT:
+   Type: AWS::EC2::SecurityGroup
+   Properties:
+    GroupDescription: "AWS Google Translator Load Balancer Security Group"
+    VpcId:
+      Fn::ImportValue:
+        !Sub "${VPCStackName}-AWSGT-VPC"
+    SecurityGroupEgress:
+     CidrIp: 0.0.0.0/0
+     IpProtocol: -1
+    SecurityGroupIngress:
+    - IpProtocol: TCP
+      FromPort: 80
+      ToPort: 80
+      CidrIp: 0.0.0.0/0
+    - IpProtocol: TCP
+      FromPort: 443
+      ToPort: 443
+      CidrIp: 0.0.0.0/0
+    - IpProtocol: ICMP
+      FromPort: -1
+      ToPort: -1
+      CidrIp: 0.0.0.0/0
