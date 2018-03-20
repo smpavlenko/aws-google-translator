@@ -11,6 +11,9 @@ Parameters:
   VPCStackName:
     Description: VPC STACK Name
     Type: String
+  ELBAccountID:
+    Description: Elastic Load Balancing Account ID
+    Type: String
 
 Resources:
  SGELBAWSGT:
@@ -60,3 +63,25 @@ Resources:
       Value: !Ref Project
     - Key: Type
       Value: "s3-aws-gt-elb-logs"
+
+ AccessLogBucketPolicy:
+   Type: AWS::S3::BucketPolicy
+   Properties:
+    Bucket: !Ref AccessLogBucket
+    PolicyDocument:
+      Version: 2012-10-17
+      Statement:
+        - Effect: Allow
+          Principal:
+            AWS: !Sub "arn:aws:iam::${ELBAccountID}:root"
+          Action: 's3:PutObject'
+          Resource:
+          - !Join
+            - ''
+            - - "arn:aws:s3:::"
+              - !Ref AccessLogBucket
+              - "/*"
+          - !Join
+            - ''
+            - - "arn:aws:s3:::"
+              - !Ref AccessLogBucket
