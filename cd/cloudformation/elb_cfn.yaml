@@ -41,3 +41,22 @@ Resources:
       Value: AWS GT ELB security group
     - Key: Project
       Value: !Ref Project
+
+ AccessLogBucket:
+   Type: AWS::S3::Bucket
+   DeletionPolicy: Delete
+   Properties:
+    BucketName: "aws-gt-elb-logs"
+    LifecycleConfiguration:
+      Rules:
+        - Id: "DeleteLogsInAMonth"
+          Status: Enabled
+          ExpirationInDays: '30'
+          NoncurrentVersionExpirationInDays: '30'
+          AbortIncompleteMultipartUpload:
+            DaysAfterInitiation: '1'
+    Tags:
+    - Key: Project
+      Value: !Ref Project
+    - Key: Type
+      Value: "s3-aws-gt-elb-logs"
