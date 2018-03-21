@@ -63,3 +63,32 @@ Virtual Private Network
 Amazon ElastiCache
     Memcached - partitioned across multiple nodes. Can scale horizontally. No snapshots supported
     Redis - support the concept of replication groups to scale horizontally. Supports both automated and manual snapshots
+
+11.
+Amazon CloudFront - global CDN service
+AWS Storage Gateway - service that connects an on-premises software appliance with cloud-based storage
+    Gateway-Cached Volumes
+    Gateway-Stored Volumes
+    Gateway Virtual Tape Libraries
+AWS Directory Service - providing directories that contain information about your organization, including users, groups, computers, and other resources
+    Microsoft AD
+    Simple AD
+    AD Connector
+AWS Key Management Service (KMS) and AWS CloudHSM - managed service that makes it easy for you to create and control the encryption keys used to encrypt your data
+AWS CloudTrail - provides visibility into user activity by recording API calls made on your account
+Amazon Kinesis - platform for handling massive streaming data on AWS
+    Amazon Kinesis Firehose
+    Amazon Kinesis Streams
+    Amazon Kinesis Analytics
+Amazon Elastic MapReduce - provides with a fully managed, on-demand Hadoop framework
+    Hadoop Distributed File System
+    EMR File System
+AWS Data Pipeline - helps to process and move data between different AWS compute and storage services
+AWS Import/Export - accelerates transferring large amounts of data into and out of AWS using physical storage
+    AWS Snowball
+    AWS Import/Export Disk
+AWS OpsWorks
+AWS CloudFormation
+AWS Elastic Beanstalk
+AWS Trusted Advisor
+AWS Config - provides configuration history
