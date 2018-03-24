@@ -11,9 +11,6 @@ Parameters:
   VPCStackName:
     Description: VPC STACK Name
     Type: String
-  ELBAccountID:
-    Description: Elastic Load Balancing Account ID
-    Type: String
 
 Resources:
  SGELBAWSGT:

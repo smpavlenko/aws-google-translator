@@ -8,6 +8,9 @@ Parameters:
     Description: Project Name Tag
     Type: String
     Default: AWSGT
+  ELBAccountID:
+    Description: Elastic Load Balancing Account ID
+    Type: String
 
 Resources:
   AccessLogBucket:
@@ -27,7 +30,7 @@ Resources:
       - Key: Project
         Value: !Ref Project
       - Key: Type
-        Value: "s3-aws-gt-elb-logs"
+        Value: "aws-gt-elb-logs"
 
   AccessLogBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -50,3 +53,10 @@ Resources:
               - ''
               - - "arn:aws:s3:::"
                 - !Ref AccessLogBucket
+
+Outputs:
+  S3ELBAccessLogsBucket:
+    Description: AWS GT ELB Accesslogs Bucket
+    Value: !Ref AccessLogBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-AWSGT-S3"
