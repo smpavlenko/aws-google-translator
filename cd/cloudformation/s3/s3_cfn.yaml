@@ -1,0 +1,52 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: AWS Google Translator S3 and subroutines
+
+Parameters:
+  Project:
+    Description: Project Name Tag
+    Type: String
+    Default: AWSGT
+
+Resources:
+  AccessLogBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      BucketName: "aws-gt-elb-logs"
+      LifecycleConfiguration:
+        Rules:
+          - Id: "DeleteLogsInAMonth"
+            Status: Enabled
+            ExpirationInDays: '30'
+            NoncurrentVersionExpirationInDays: '30'
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: '1'
+      Tags:
+      - Key: Project
+        Value: !Ref Project
+      - Key: Type
+        Value: "s3-aws-gt-elb-logs"
+
+  AccessLogBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref AccessLogBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::${ELBAccountID}:root"
+            Action: 's3:PutObject'
+            Resource:
+            - !Join
+              - ''
+              - - "arn:aws:s3:::"
+                - !Ref AccessLogBucket
+                - "/*"
+            - !Join
+              - ''
+              - - "arn:aws:s3:::"
+                - !Ref AccessLogBucket
