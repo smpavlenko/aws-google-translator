@@ -8,9 +8,6 @@ Parameters:
     Description: Project Name Tag
     Type: String
     Default: AWSGT
-  VPCStackName:
-    Description: VPC STACK Name
-    Type: String
 
 Resources:
  SGELBAWSGT:
@@ -18,8 +15,7 @@ Resources:
    Properties:
     GroupDescription: "AWS Google Translator Load Balancer Security Group"
     VpcId:
-      Fn::ImportValue:
-        !Sub "${VPCStackName}-AWSGT-VPC"
+      Fn::ImportValue: "AWSGT-VPC"
     SecurityGroupEgress:
       CidrIp: 0.0.0.0/0
       IpProtocol: -1
@@ -47,8 +43,7 @@ Resources:
   Properties:
    GroupDescription: "Security group for communication between AWS GT ELB and nodes"
    VpcId:
-      Fn::ImportValue:
-        !Sub "${VPCStackName}-AWSGT-VPC"
+      Fn::ImportValue: "AWSGT-VPC"
    SecurityGroupEgress:
     CidrIp: 0.0.0.0/0
     IpProtocol: -1
@@ -57,3 +52,8 @@ Resources:
      IpProtocol: TCP
      FromPort: 8080
      ToPort: 8080
+   Tags:
+   - Key: Name
+     Value: AWS GT ELB security group
+   - Key: Project
+     Value: !Ref Project

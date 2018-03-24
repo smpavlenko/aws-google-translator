@@ -59,4 +59,4 @@ Outputs:
     Description: AWS GT ELB Accesslogs Bucket
     Value: !Ref AccessLogBucket
     Export:
-      Name: !Sub "${AWS::StackName}-AWSGT-S3"
+      Name: !Sub "AWSGT-S3-ELBAccessLogs"

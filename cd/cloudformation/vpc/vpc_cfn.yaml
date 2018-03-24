@@ -9,7 +9,6 @@ Parameters:
     Type: String
     Default: AWSGT
 
-
 Resources:
   AWSGTVPC:
     Type: AWS::EC2::VPC
@@ -100,19 +99,19 @@ Outputs:
     Description: AWS GT VPC
     Value: !Ref AWSGTVPC
     Export:
-      Name: !Sub "${AWS::StackName}-AWSGT-VPC"
+      Name: !Sub "AWSGT-VPC"
 
   Subnet0:
     Description: AWS GT Public Subnet0
     Value: !Ref AWSGTPublicSubnet0
     Export:
-      Name: !Sub "${AWS::StackName}-AWSGT-Subnet0"
+      Name: !Sub "AWSGT-PublicSubnet0"
 
   Subnet1:
     Description: AWS GT Public Subnet1
     Value: !Ref AWSGTPublicSubnet1
     Export:
-      Name: !Sub "${AWS::StackName}-AWSGT-Subnet1"
+      Name: !Sub "AWSGT-PublicSubnet1"
 
   AZ0:
     Description: AWS GT Availability Zone 0
@@ -120,7 +119,7 @@ Outputs:
       - AWSGTPublicSubnet0
       - AvailabilityZone
     Export:
-      Name: !Sub "${AWS::StackName}-AWSGT-AZ0"
+      Name: !Sub "AWSGT-AZ0"
 
   AZ1:
     Description: AWS GT Availability Zone 1
@@ -128,5 +127,5 @@ Outputs:
       - AWSGTPublicSubnet1
       - AvailabilityZone
     Export:
-      Name: !Sub "${AWS::StackName}-AWSGT-AZ1"
+      Name: !Sub "AWSGT-AZ1"
 
