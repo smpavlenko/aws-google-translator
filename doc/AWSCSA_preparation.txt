@@ -14,8 +14,15 @@ Bucket is a container (web folder) for objects (files) stored in Amazon S3. Buck
 Amazon S3, and bucket names are global. Bucket names must be unique across all AWS accounts.
     - S3 standard storage is designed for 99.999999999% durability and 99.99% availability.
     - Amazon Glacier is designed for 99.999999999% durability.
+Virtual-Hosted–Style URL
+    - URL http://<bucket-name>.s3.amazonaws.com
+    - URL http://<bucket-name>.s3-<AWS-region>.amazonaws.com
+Path-style URL
+    - URL http://s3.amazonaws.com/<bucket-name> for US East (N. Virginia) Region (us-east-1)
+    - URL http://s3-<AWS-region>.amazonaws.com/<bucket-name>
 Static Website Hosting
     - URL <bucket-name>.s3-website-<AWS-region>.amazonaws.com
+    - URL <bucket-name>.s3-website.<AWS-region>.amazonaws.com
 Amazon S3 Standard offers high durability, high availability, low latency, and high performance object storage for
 general purpose use.
 Amazon S3 Standard – Infrequent Access (Standard-IA) offers the same durability, low latency, and high throughput as
