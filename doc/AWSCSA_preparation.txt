@@ -17,9 +17,11 @@ Amazon S3, and bucket names are global. Bucket names must be unique across all A
 Virtual-Hosted–Style URL
     - URL http://<bucket-name>.s3.amazonaws.com
     - URL http://<bucket-name>.s3-<AWS-region>.amazonaws.com
+    - URL http://<bucket-name>.s3.<AWS-region>.amazonaws.com
 Path-style URL
     - URL http://s3.amazonaws.com/<bucket-name> for US East (N. Virginia) Region (us-east-1)
     - URL http://s3-<AWS-region>.amazonaws.com/<bucket-name>
+    - URL http://s3.<AWS-region>.amazonaws.com/<bucket-name>
 Static Website Hosting
     - URL <bucket-name>.s3-website-<AWS-region>.amazonaws.com
     - URL <bucket-name>.s3-website.<AWS-region>.amazonaws.com
