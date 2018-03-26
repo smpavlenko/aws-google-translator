@@ -57,3 +57,26 @@ Resources:
      Value: AWS GT ELB security group
    - Key: Project
      Value: !Ref Project
+
+ ELBAWSGT:
+  Type: AWS::ElasticLoadBalancing::LoadBalancer
+  Properties:
+    Tags:
+    - Key: Name
+      Value: AWS GT ELB security group
+    - Key: Project
+      Value: !Ref Project
+    LoadBalancerName: "aws-gt-elb"
+    SecurityGroups:
+      - !Ref SGELBAWSGT
+    Scheme: internet-facing
+    Subnets: !Ref Subnets
+    Listeners:
+    - LoadBalancerPort: 80
+      InstancePort: 8080
+      Protocol: HTTP
+    - LoadBalancerPort: 443
+      InstancePort: 8080
+      Protocol: HTTPS
+      InstanceProtocol: HTTP
+
