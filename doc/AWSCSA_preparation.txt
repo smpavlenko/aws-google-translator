@@ -9,6 +9,44 @@ Six advantages of Cloud computing
     - Focus on Business Differentiators
     - Go Global in Minutes
 
+3.
+Bucket is a container (web folder) for objects (files) stored in Amazon S3. Buckets form the top-level namespace for
+Amazon S3, and bucket names are global. Bucket names must be unique across all AWS accounts.
+    - S3 standard storage is designed for 99.999999999% durability and 99.99% availability.
+    - Amazon Glacier is designed for 99.999999999% durability.
+Virtual-Hosted–Style URL
+    - URL http://<bucket-name>.s3.amazonaws.com
+    - URL http://<bucket-name>.s3-<AWS-region>.amazonaws.com
+    - URL http://<bucket-name>.s3.<AWS-region>.amazonaws.com
+Path-style URL
+    - URL http://s3.amazonaws.com/<bucket-name> for US East (N. Virginia) Region (us-east-1)
+    - URL http://s3-<AWS-region>.amazonaws.com/<bucket-name>
+    - URL http://s3.<AWS-region>.amazonaws.com/<bucket-name>
+Static Website Hosting
+    - URL <bucket-name>.s3-website-<AWS-region>.amazonaws.com
+    - URL <bucket-name>.s3-website.<AWS-region>.amazonaws.com
+Amazon S3 Standard offers high durability, high availability, low latency, and high performance object storage for
+general purpose use.
+Amazon S3 Standard – Infrequent Access (Standard-IA) offers the same durability, low latency, and high throughput as
+Amazon S3 Standard, but is designed for long-lived, less frequently accessed data (transition after 30 days).
+Amazon S3 Reduced Redundancy Storage (RRS) offers slightly lower durability (4 nines) than Standard or Standard-IA at a
+reduced cost.
+Amazon Glacier storage class offers secure, durable, and extremely low-cost cloud storage for data that does not require
+ real-time access, such as archives and long-term backups (transition after 90 days).
+Encryption
+    - SSE-S3 (AWS-Managed Keys)
+    - SSE-KMS (AWS KMS Keys)
+    - SSE-C (Customer-Provided Keys)
+    - Client-Side Encryption
+Pre-Signed URLs - to grant time-limited permission to download the objects.
+Multipart Upload - allows you to upload large objects as a set of parts, which generally gives better network
+utilization (through parallel transfers), the ability to pause and resume, and the ability to upload objects where the size is initially unknown.
+Cross-region replication is a feature of Amazon S3 that allows you to asynchronously replicate all new objects in the source bucket in one AWS region to a target bucket in another region.
+Event Notifications - can be sent in response to actions taken on objects uploaded or stored in Amazon S3.
+    - to Amazon SNS
+    - to Amazon SQS
+    - to AWS Lambda
+
 4.
 Amazon VPC
     - per one region
