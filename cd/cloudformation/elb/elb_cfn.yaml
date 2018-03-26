@@ -70,7 +70,9 @@ Resources:
     SecurityGroups:
       - !Ref SGELBAWSGT
     Scheme: internet-facing
-    Subnets: !Ref Subnets
+    Subnets:
+      - !ImportValue: "AWSGT-PublicSubnet0"
+      - !ImportValue: "AWSGT-PublicSubnet1"
     Listeners:
     - LoadBalancerPort: 80
       InstancePort: 8080
@@ -80,3 +82,13 @@ Resources:
       Protocol: HTTPS
       InstanceProtocol: HTTP
 
+Outputs:
+ ELBAWSGT:
+  Description: AWS GT ELB
+  Value: !Ref ELBAWSGT
+  Export:
+   Name: !Sub "AWSGT-ELB"
+
+ ELBAWSGTDNSNAME:
+  Description: AWS GT ELB DNS NAME
+  Value: !GetAtt ELBAWSGT.DNSName
