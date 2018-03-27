@@ -9,7 +9,7 @@ Six advantages of Cloud computing
     - Focus on Business Differentiators
     - Go Global in Minutes
 
-3.
+2.
 Bucket is a container (web folder) for objects (files) stored in Amazon S3. Buckets form the top-level namespace for
 Amazon S3, and bucket names are global. Bucket names must be unique across all AWS accounts.
     - S3 standard storage is designed for 99.999999999% durability and 99.99% availability.
@@ -46,6 +46,31 @@ Event Notifications - can be sent in response to actions taken on objects upload
     - to Amazon SNS
     - to Amazon SQS
     - to AWS Lambda
+
+3.
+EC2 is AWS primary web service that provides resizable compute capacity in the cloud.
+Amazon Machine Image (AMI) defines the initial software that will be on an instance when it is launched.
+    - Published by AWS
+    - The AWS Marketplace
+    - Generated from Existing Instances
+    - Uploaded Virtual Servers
+Pricing Options
+    - On-Demand Instances
+    - Reserved Instances
+        - All Upfront
+        - Partial Upfront
+        - No Upfront
+    - Spot Instances
+Tenancy Options
+    - Shared Tenancy
+    - Dedicated Instances
+    - Dedicated Host
+Placement group is a logical grouping of instances within a single Availability Zone. Placement groups enable
+applications to participate in a low-latency, 10 Gbps network.
+Types of Amazon EBS Volumes
+    - General-Purpose SSD (up to 10k IOPS)
+    - Provisioned IOPS SSD (more than 10k IOPS)
+    - Magnetic Volumes
 
 4.
 Amazon VPC
