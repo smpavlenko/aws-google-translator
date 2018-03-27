@@ -1,5 +1,5 @@
 AWS Preparation
-1.
+1. Essentials
 Cloud computing is the on-demand delivery of IT resources and applications via the Internet with pay-as-you-go pricing.
 Six advantages of Cloud computing
     - Variable vs. Capital Expense
@@ -9,7 +9,7 @@ Six advantages of Cloud computing
     - Focus on Business Differentiators
     - Go Global in Minutes
 
-2.
+2. S3
 Bucket is a container (web folder) for objects (files) stored in Amazon S3. Buckets form the top-level namespace for
 Amazon S3, and bucket names are global. Bucket names must be unique across all AWS accounts.
     - S3 standard storage is designed for 99.999999999% durability and 99.99% availability.
@@ -47,7 +47,7 @@ Event Notifications - can be sent in response to actions taken on objects upload
     - to Amazon SQS
     - to AWS Lambda
 
-3.
+3. EC2
 EC2 is AWS primary web service that provides resizable compute capacity in the cloud.
 Amazon Machine Image (AMI) defines the initial software that will be on an instance when it is launched.
     - Published by AWS
@@ -72,7 +72,7 @@ Types of Amazon EBS Volumes
     - Provisioned IOPS SSD (more than 10k IOPS)
     - Magnetic Volumes
 
-4.
+4. VPC
 Amazon VPC
     - per one region
     - up to 5 VPC per region
@@ -121,6 +121,7 @@ NAT Gateway - managed resource that is designed to operate just like a NAT insta
 Virtual Private Gateway - the VPN concentrator on the AWS side of the VPN connection between the two networks
 Customer Gateway - represents a physical device or a software application on the customer’s side of the VPN connection
 Virtual Private Network
+
 
 10.
 Amazon ElastiCache
