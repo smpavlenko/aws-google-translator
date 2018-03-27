@@ -115,13 +115,14 @@ Network Access Control List - another layer of security that acts as a stateless
     - automatically applied to all instances in the associated subnets
     - one Network ACL can be attached to multiple subnets
     - each subnet can be attached to one Network ACL
-NAT Instance - an Amazon Linux Amazon Machine Image (AMI) that is designed to accept traffic from instances within a private subnet, translate the source IP address to the public IP address of the NAT instance, and forward the traffic to the IGW
+NAT Instance - an Amazon Linux Amazon Machine Image (AMI) that is designed to accept traffic from instances within a
+private subnet, translate the source IP address to the public IP address of the NAT instance, and forward the traffic to
+ the IGW. Obsolete, use NAT Gateway instead
 NAT Gateway - managed resource that is designed to operate just like a NAT instance
     - within an Availability Zone
 Virtual Private Gateway - the VPN concentrator on the AWS side of the VPN connection between the two networks
 Customer Gateway - represents a physical device or a software application on the customer’s side of the VPN connection
 Virtual Private Network
-
 
 10.
 Amazon ElastiCache
