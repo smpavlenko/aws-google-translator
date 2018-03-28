@@ -124,6 +124,16 @@ Virtual Private Gateway - the VPN concentrator on the AWS side of the VPN connec
 Customer Gateway - represents a physical device or a software application on the customer’s side of the VPN connection
 Virtual Private Network
 
+5. ELB
+Elastic Load Balancing is a highly available service that distributes traffic across EC2 instances
+Amazon CloudWatch is a service that monitors AWS Cloud resources and applications running on AWS
+Auto Scaling is a service that allows you to maintain the availability of your applications by scaling Amazon EC2 capacity up or down in accordance with conditions you set
+ELB
+    - Internet-facing load balancer
+    - Internal Load Balancers
+    - HTTPS Load Balancers
+Launch configuration is the template that Auto Scaling uses to create new instances
+
 10.
 Amazon ElastiCache
     Memcached - partitioned across multiple nodes. Can scale horizontally. No snapshots supported
