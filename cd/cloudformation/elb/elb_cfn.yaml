@@ -92,3 +92,15 @@ Outputs:
  ELBAWSGTDNSNAME:
   Description: AWS GT ELB DNS NAME
   Value: !GetAtt ELBAWSGT.DNSName
+
+ SGELBAWSGT:
+  Description: AWS GT Load Balancer Security Group
+  Value: !Ref SGELBAWSGT
+  Export:
+   Name: !Sub "AWSGT-ELB-SecurityGroup"
+
+ SGELBAWSGT:
+  Description: AWS GT Load Balancer to EC2 Security Group
+  Value: !Ref ELBAWSGTToNodesSG
+  Export:
+   Name: !Sub "AWSGT-ELB-EC2-SecurityGroup"
