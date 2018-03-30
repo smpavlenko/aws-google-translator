@@ -81,6 +81,7 @@ Resources:
       InstancePort: 8080
       Protocol: HTTPS
       InstanceProtocol: HTTP
+    CrossZone: true
 
 Outputs:
  ELBAWSGT:
