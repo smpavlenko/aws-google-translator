@@ -1,5 +1,5 @@
 AWS Preparation
-1.
+1. Essentials
 Cloud computing is the on-demand delivery of IT resources and applications via the Internet with pay-as-you-go pricing.
 Six advantages of Cloud computing
     - Variable vs. Capital Expense
@@ -9,7 +9,7 @@ Six advantages of Cloud computing
     - Focus on Business Differentiators
     - Go Global in Minutes
 
-3.
+2. S3
 Bucket is a container (web folder) for objects (files) stored in Amazon S3. Buckets form the top-level namespace for
 Amazon S3, and bucket names are global. Bucket names must be unique across all AWS accounts.
     - S3 standard storage is designed for 99.999999999% durability and 99.99% availability.
@@ -47,7 +47,32 @@ Event Notifications - can be sent in response to actions taken on objects upload
     - to Amazon SQS
     - to AWS Lambda
 
-4.
+3. EC2
+EC2 is AWS primary web service that provides resizable compute capacity in the cloud.
+Amazon Machine Image (AMI) defines the initial software that will be on an instance when it is launched.
+    - Published by AWS
+    - The AWS Marketplace
+    - Generated from Existing Instances
+    - Uploaded Virtual Servers
+Pricing Options
+    - On-Demand Instances
+    - Reserved Instances
+        - All Upfront
+        - Partial Upfront
+        - No Upfront
+    - Spot Instances
+Tenancy Options
+    - Shared Tenancy
+    - Dedicated Instances
+    - Dedicated Host
+Placement group is a logical grouping of instances within a single Availability Zone. Placement groups enable
+applications to participate in a low-latency, 10 Gbps network.
+Types of Amazon EBS Volumes
+    - General-Purpose SSD (up to 10k IOPS)
+    - Provisioned IOPS SSD (more than 10k IOPS)
+    - Magnetic Volumes
+
+4. VPC
 Amazon VPC
     - per one region
     - up to 5 VPC per region
@@ -90,12 +115,24 @@ Network Access Control List - another layer of security that acts as a stateless
     - automatically applied to all instances in the associated subnets
     - one Network ACL can be attached to multiple subnets
     - each subnet can be attached to one Network ACL
-NAT Instance - an Amazon Linux Amazon Machine Image (AMI) that is designed to accept traffic from instances within a private subnet, translate the source IP address to the public IP address of the NAT instance, and forward the traffic to the IGW
+NAT Instance - an Amazon Linux Amazon Machine Image (AMI) that is designed to accept traffic from instances within a
+private subnet, translate the source IP address to the public IP address of the NAT instance, and forward the traffic to
+ the IGW. Obsolete, use NAT Gateway instead
 NAT Gateway - managed resource that is designed to operate just like a NAT instance
     - within an Availability Zone
 Virtual Private Gateway - the VPN concentrator on the AWS side of the VPN connection between the two networks
 Customer Gateway - represents a physical device or a software application on the customer’s side of the VPN connection
 Virtual Private Network
+
+5. ELB
+Elastic Load Balancing is a highly available service that distributes traffic across EC2 instances
+Amazon CloudWatch is a service that monitors AWS Cloud resources and applications running on AWS
+Auto Scaling is a service that allows you to maintain the availability of your applications by scaling Amazon EC2 capacity up or down in accordance with conditions you set
+ELB
+    - Internet-facing load balancer
+    - Internal Load Balancers
+    - HTTPS Load Balancers
+Launch configuration is the template that Auto Scaling uses to create new instances
 
 10.
 Amazon ElastiCache
