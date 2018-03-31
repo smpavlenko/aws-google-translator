@@ -148,6 +148,22 @@ Policy is a JSON document that fully defines a set of permissions to access and 
     - Action
     - Condition
 
+7. RDS
+Online Transaction Processing (OLTP)
+    - MySQL
+    - SQL Server
+    - Oracle
+    - PostgreSQL
+    - MariaDB
+    - Amazon Aurora
+Online Analytical Processing (OLAP)
+    - Redshift - fast, powerful, fully managed, petabyte-scale data warehouse service in the cloud
+NoSQL databases
+    - DynamoDB - fully managed NoSQL database service that provides fast and low-latency performance that scales with ease
+        - Eventually Consistent Reads
+        - Strongly Consistent Reads
+Data Warehouse is a central repository for data that can come from one or more sources
+
 10.
 Amazon ElastiCache
     Memcached - partitioned across multiple nodes. Can scale horizontally. No snapshots supported
