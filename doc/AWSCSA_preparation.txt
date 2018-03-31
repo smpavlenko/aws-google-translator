@@ -164,6 +164,20 @@ NoSQL databases
         - Strongly Consistent Reads
 Data Warehouse is a central repository for data that can come from one or more sources
 
+8. SQS, SWF, and SNS
+SQS is a fast, reliable, scalable, and fully managed message queuing service
+    - can be FIFO
+    - can support long polling
+SWF allows to create applications that coordinate work across distributed components
+    - Actors
+    - Tasks
+SNS is a web service for mobile and enterprise messaging that enables you to set up, operate, and send notifications
+    - AWS Lambda
+    - AWS SQS
+    - HTTP/S
+    - Email
+    - SMS
+
 10.
 Amazon ElastiCache
     Memcached - partitioned across multiple nodes. Can scale horizontally. No snapshots supported
