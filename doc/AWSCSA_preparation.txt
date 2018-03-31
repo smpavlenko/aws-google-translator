@@ -178,6 +178,21 @@ SNS is a web service for mobile and enterprise messaging that enables you to set
     - Email
     - SMS
 
+9. DNS and Route 53
+Route 53 - highly available and scalable cloud DNS web service that is designed to give developers and businesses an
+extremely reliable and cost-effective way to route end users to Internet applications
+    - Domain registration
+    - DNS service
+    - Health checking
+Canonical Name (CNAME) record is a type of resource record in the DNS that defines an alias for the CNAME for your
+server
+Routing policies
+    - Simple
+    - Weighted
+    - Latency-Based
+    - Failover
+    - Geolocation
+
 10.
 Amazon ElastiCache
     Memcached - partitioned across multiple nodes. Can scale horizontally. No snapshots supported
