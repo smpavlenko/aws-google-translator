@@ -1,6 +1,7 @@
 AWS Preparation
 1. Essentials
 Cloud computing is the on-demand delivery of IT resources and applications via the Internet with pay-as-you-go pricing.
+It provides a simple way to access servers, storage, databases, and broad set of application services over the Internet.
 Six advantages of Cloud computing
     - Variable vs. Capital Expense
     - Economies of Scale
@@ -120,6 +121,7 @@ private subnet, translate the source IP address to the public IP address of the 
  the IGW. Obsolete, use NAT Gateway instead
 NAT Gateway - managed resource that is designed to operate just like a NAT instance
     - within an Availability Zone
+    - must be a part of Public subnet
 Virtual Private Gateway - the VPN concentrator on the AWS side of the VPN connection between the two networks
 Customer Gateway - represents a physical device or a software application on the customer’s side of the VPN connection
 Virtual Private Network
