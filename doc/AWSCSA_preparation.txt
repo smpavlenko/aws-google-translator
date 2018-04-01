@@ -193,12 +193,12 @@ Routing policies
     - Failover
     - Geolocation
 
-10.
+10. ElastiCache
 Amazon ElastiCache
     Memcached - partitioned across multiple nodes. Can scale horizontally. No snapshots supported
     Redis - support the concept of replication groups to scale horizontally. Supports both automated and manual snapshots
 
-11.
+11. Additional Key Services
 Amazon CloudFront - global CDN service
 AWS Storage Gateway - service that connects an on-premises software appliance with cloud-based storage
     Gateway-Cached Volumes
@@ -226,3 +226,6 @@ AWS CloudFormation
 AWS Elastic Beanstalk
 AWS Trusted Advisor
 AWS Config - provides configuration history
+
+12. Security
+AWS CloudTrail - a web service that records API calls made on your account and delivers log files to your Amazon S3 bucket
