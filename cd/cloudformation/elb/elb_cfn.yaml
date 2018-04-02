@@ -15,7 +15,7 @@ Resources:
    Properties:
     GroupDescription: "AWS Google Translator Load Balancer Security Group"
     VpcId:
-      Fn::ImportValue: "AWSGT-VPC"
+      !ImportValue: "AWSGT-VPC"
     SecurityGroupEgress:
       CidrIp: 0.0.0.0/0
       IpProtocol: -1
@@ -43,7 +43,7 @@ Resources:
   Properties:
    GroupDescription: "Security group for communication between AWS GT ELB and nodes"
    VpcId:
-      Fn::ImportValue: "AWSGT-VPC"
+      !ImportValue: "AWSGT-VPC"
    SecurityGroupEgress:
     CidrIp: 0.0.0.0/0
     IpProtocol: -1
@@ -82,6 +82,11 @@ Resources:
       Protocol: HTTPS
       InstanceProtocol: HTTP
     CrossZone: true
+    AccessLoggingPolicy:
+      EmitInterval: 5
+      Enabled: true
+      S3BucketName: !ImportValue: "AWSGT-S3-ELBAccessLogs"
+      S3BucketPrefix: "gt"
 
 Outputs:
  ELBAWSGT:
