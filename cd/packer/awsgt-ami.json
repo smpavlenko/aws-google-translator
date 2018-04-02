@@ -3,7 +3,8 @@
     "region": "eu-west-1",
     "base_ami": "ubuntu-xenial-16.04-amd64-server-*",
     "app_version": "@project.version@",
-    "tag_name": "AWSGT"
+    "tag_name": "aws-gt-ami",
+    "tag_project": "AWSGT"
   },
   "builders": [
     {
@@ -24,10 +25,12 @@
       ],
       "run_tags": {
         "Name": "{{user `tag_name`}}",
+        "Project": "{{user `tag_project`}}",
         "Version": "{{user `app_version`}}"
       },
       "tags": {
         "Name": "{{user `tag_name`}}",
+        "Project": "{{user `tag_project`}}",
         "Version": "{{user `app_version`}}"
       }
     }
