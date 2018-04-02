@@ -1,11 +1,7 @@
 #!/bin/bash
 
-# Shell provisioning script to clean up at the end
-# 1. remove awscli
-# 2. remove ansible
-# 3. cleanup and remove unused packages
-# 4. remove finger prints of keys
-# 5. remove tmp
+sudo apt-get remove tr
+sudo apt-get remove jq
 sudo apt-get remove -y awscli
 sudo apt-get remove -y ansible
 sudo apt-get autoclean -y

@@ -3,6 +3,9 @@
     "region": "eu-west-1",
     "base_ami": "ubuntu-xenial-16.04-amd64-server-*",
     "app_version": "@project.version@",
+    "ssh_username": "ubuntu",
+    "instance_type": "t2.micro",
+    "vpc_id": "{{env `vpc_id`}}",
     "tag_name": "aws-gt-ami",
     "tag_project": "AWSGT"
   },
@@ -12,6 +15,9 @@
       "type": "amazon-ebs",
       "ami_name": "AWSGT_{{user `ami_version`| clean_ami_name}}",
       "region": "{{user `region`}}",
+      "vpc_id": "{{user `vpc_id`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "instance_type": "{{user `instance_type`}}",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
