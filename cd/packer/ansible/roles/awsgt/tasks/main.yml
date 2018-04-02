@@ -6,3 +6,12 @@
 - name: Create awsgt user
   become: true
   user: name=awsgt group=awsgt shell=/bin/bash
+
+- name: Create app directory
+  become: yes
+  file: path=/srv/awsgt state=directory owner=awsgt group=awsgt
+
+- name: Create log directory
+  become: yes
+  file: path=/var/log/awsgt state=directory owner=awsgt group=awsgt
+
