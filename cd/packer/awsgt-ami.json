@@ -6,6 +6,7 @@
     "ssh_username": "ubuntu",
     "instance_type": "t2.micro",
     "vpc_id": "{{env `vpc_id`}}",
+    "subnet_id": "{{env `subnet_id`}}",
     "tag_name": "aws-gt-ami",
     "tag_project": "AWSGT"
   },
@@ -16,6 +17,7 @@
       "ami_name": "AWSGT_{{user `ami_version`| clean_ami_name}}",
       "region": "{{user `region`}}",
       "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `subnet_id`}}",
       "ssh_username": "{{user `ssh_username`}}",
       "instance_type": "{{user `instance_type`}}",
       "source_ami_filter": {
