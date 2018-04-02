@@ -63,5 +63,10 @@
       "type": "shell",
       "script": "shell/cleanup.sh"
     }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest"
+    }
   ]
 }
