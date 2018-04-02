@@ -20,6 +20,8 @@
       "subnet_id": "{{user `subnet_id`}}",
       "ssh_username": "{{user `ssh_username`}}",
       "instance_type": "{{user `instance_type`}}",
+      "ssh_private_ip": true,
+      "associate_public_ip_address": true,
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
