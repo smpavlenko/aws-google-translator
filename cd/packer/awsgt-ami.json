@@ -45,6 +45,10 @@
         "ansible/roles/java8",
         "ansible/roles/awsgt"
       ]
+    },
+    {
+      "type": "shell",
+      "script": "shell/cleanup.sh"
     }
   ]
 }
