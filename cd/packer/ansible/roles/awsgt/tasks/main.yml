@@ -15,3 +15,8 @@
   become: yes
   file: path=/var/log/awsgt state=directory owner=awsgt group=awsgt
 
+- name: Copy service jar
+  become: yes
+  become_user: awsgt
+  copy: src="{{ item }}" dest=/srv/awsgt/app.jar
+  with_fileglob: "aws-google-translator-*.jar"
