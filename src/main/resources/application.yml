@@ -8,6 +8,6 @@ logging.level:
 info.app.name:
   AWS Google Translator
 info.app.description:
-  This is a simple RESTful microservice which thanslates text using Google Translate API
+  This is a simple RESTful microservice which translates text using Google Translate API
 info.app.version:
   @project.version@

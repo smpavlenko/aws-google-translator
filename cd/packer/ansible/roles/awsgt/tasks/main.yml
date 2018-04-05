@@ -27,3 +27,4 @@
   copy: src={{item}} dest=/srv/awsgt/{{item}} owner=awsgt group=awsgt mode="u=r"
   with_items:
    - log4j2.xml
+   - application.properties
