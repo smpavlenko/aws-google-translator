@@ -10,6 +10,21 @@ Parameters:
     Default: AWSGT
 
 Resources:
+  NodeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: "aws-gt-ec2-node-role"
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        -
+          Effect: Allow
+          Principal:
+            Service:
+              - ec2.amazonaws.com
+          Action:
+            - sts:AssumeRole
+
   LaunchConfig:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
@@ -22,3 +37,4 @@ Resources:
       SecurityGroups:
       - Fn::ImportValue:
           !Sub "AWSGT-ELB-EC2-SecurityGroup"
+
