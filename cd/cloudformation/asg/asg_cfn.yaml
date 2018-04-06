@@ -25,6 +25,12 @@ Resources:
           Action:
             - sts:AssumeRole
 
+  NodeProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref NodeRole
+
   LaunchConfig:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
