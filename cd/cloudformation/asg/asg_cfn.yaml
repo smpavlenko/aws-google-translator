@@ -9,6 +9,11 @@ Parameters:
     Type: String
     Default: AWSGT
 
+  ImageId:
+    Description: AMI id
+    Type: String
+
+
 Resources:
   NodeRole:
     Type: AWS::IAM::Role
@@ -43,4 +48,5 @@ Resources:
       SecurityGroups:
       - Fn::ImportValue:
           !Sub "AWSGT-ELB-EC2-SecurityGroup"
+      ImageId: !Ref ImageId
 
