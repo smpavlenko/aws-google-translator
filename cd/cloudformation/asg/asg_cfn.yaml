@@ -13,6 +13,15 @@ Parameters:
     Description: AMI id
     Type: String
 
+  InstanceType:
+    Description: ec2 instance type
+    Type: String
+    AllowedValues:
+     - t2.micro
+     - t2.medium
+    ConstraintDescription: must be a valid EC2 instance type.
+    Default: t2.micro
+
 
 Resources:
   NodeRole:
@@ -49,4 +58,5 @@ Resources:
       - Fn::ImportValue:
           !Sub "AWSGT-ELB-EC2-SecurityGroup"
       ImageId: !Ref ImageId
+      InstanceType: !Ref InstanceType
 
