@@ -59,4 +59,12 @@ Resources:
           !Sub "AWSGT-ELB-EC2-SecurityGroup"
       ImageId: !Ref ImageId
       InstanceType: !Ref InstanceType
+      IamInstanceProfile: !Ref NodeProfile
+      Metadata:
+        AWS::CloudFormation::Init:
+          config:
+            commands:
+              01_apt_update:
+                command: 'apt-get update'
+
 
