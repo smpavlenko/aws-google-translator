@@ -22,9 +22,14 @@ Parameters:
     ConstraintDescription: must be a valid EC2 instance type.
     Default: t2.micro
 
+  InstanceCount:
+    Description: Number of EC2 instances to launch
+    Type: Number
+    Default: 2
+
 
 Resources:
-  NodeRole:
+  NodeRoleAWSGT:
     Type: AWS::IAM::Role
     Properties:
       RoleName: "aws-gt-ec2-node-role"
@@ -39,13 +44,13 @@ Resources:
           Action:
             - sts:AssumeRole
 
-  NodeProfile:
+  NodeProfileAWSGT:
     Type: AWS::IAM::InstanceProfile
     Properties:
       Roles:
-        - !Ref NodeRole
+        - !Ref NodeRoleAWSGT
 
-  LaunchConfig:
+  LaunchConfigAWSGT:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
       AssociatePublicIpAddress: true
@@ -59,12 +64,20 @@ Resources:
           !Sub "AWSGT-ELB-EC2-SecurityGroup"
       ImageId: !Ref ImageId
       InstanceType: !Ref InstanceType
-      IamInstanceProfile: !Ref NodeProfile
+      IamInstanceProfile: !Ref NodeProfileAWSGT
       Metadata:
         AWS::CloudFormation::Init:
           config:
             commands:
               01_apt_update:
                 command: 'apt-get update'
+
+  AutoscalingGroupAWSGT:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    CreationPolicy:
+      ResourceSignal:
+        Count: !Ref InstanceCount
+        Timeout: PT10M
+    Properties:
 
 
