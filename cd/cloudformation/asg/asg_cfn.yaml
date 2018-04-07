@@ -78,6 +78,9 @@ Resources:
       ResourceSignal:
         Count: !Ref InstanceCount
         Timeout: PT10M
+    UpdatePolicy:
+      - AutoScalingReplacingUpdate:
+        WillReplace: false
     Properties:
 
 
