@@ -82,5 +82,15 @@ Resources:
       - AutoScalingReplacingUpdate:
         WillReplace: false
     Properties:
+      Tags:
+      - Key: Name
+        Value: AWS GT ASG
+        PropagateAtLaunch: true
+      - Key: Project
+        Value: !Ref Project
+        PropagateAtLaunch: true
+      HealthCheckType: ELB
+      HealthCheckGracePeriod: 300
+
 
 
