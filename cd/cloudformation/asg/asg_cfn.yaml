@@ -107,6 +107,7 @@ Resources:
       LaunchConfigurationName: !Ref LaunchConfigAWSGT
       MinSize: !Ref MinInstancesCount
       MaxSize: !Ref MaxInstancesCount
+      DesiredCapacity: !Ref InstanceCount
 
 
 
