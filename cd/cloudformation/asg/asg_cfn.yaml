@@ -27,6 +27,16 @@ Parameters:
     Type: Number
     Default: 2
 
+  MinInstancesCount:
+    Description: Min number of EC2 instances to launch
+    Type: Number
+    Default: 2
+
+  MaxInstancesCount:
+    Description: Max number of EC2 instances to launch
+    Type: Number
+    Default: 4
+
 
 Resources:
   NodeRoleAWSGT:
@@ -94,7 +104,9 @@ Resources:
       VPCZoneIdentifier:
         - !ImportValue: "AWSGT-PublicSubnet0"
         - !ImportValue: "AWSGT-PublicSubnet1"
-
+      LaunchConfigurationName: !Ref LaunchConfigAWSGT
+      MinSize: !Ref MinInstancesCount
+      MaxSize: !Ref MaxInstancesCount
 
 
 
