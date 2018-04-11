@@ -91,6 +91,10 @@ Resources:
         PropagateAtLaunch: true
       HealthCheckType: ELB
       HealthCheckGracePeriod: 300
+      VPCZoneIdentifier:
+        - !ImportValue: "AWSGT-PublicSubnet0"
+        - !ImportValue: "AWSGT-PublicSubnet1"
+
 
 
 
