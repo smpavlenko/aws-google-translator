@@ -108,6 +108,14 @@ Resources:
       MinSize: !Ref MinInstancesCount
       MaxSize: !Ref MaxInstancesCount
       DesiredCapacity: !Ref InstanceCount
-
-
-
+      MetricsCollection:
+        - Granularity: 1Minute
+          Metrics:
+          - GroupMaxSize
+          - GroupMinSize
+          - GroupDesiredCapacity
+          - GroupInServiceInstances
+          - GroupPendingInstances
+          - GroupStandbyInstances
+          - GroupTerminatingInstances
+          - GroupTotalInstances
