@@ -97,6 +97,7 @@ Resources:
       - AutoScalingReplacingUpdate:
         WillReplace: false
     Properties:
+      AutoScalingGroupName: "aws-gt-asg"
       Tags:
       - Key: Name
         Value: AWS GT ASG
