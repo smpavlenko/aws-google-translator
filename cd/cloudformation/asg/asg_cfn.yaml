@@ -37,6 +37,11 @@ Parameters:
     Type: Number
     Default: 4
 
+  ScalingUpAdjustment:
+    Description: Number of machines to upscale
+    Type: Number
+    Default: 1
+
 
 Resources:
   NodeRoleAWSGT:
@@ -119,3 +124,12 @@ Resources:
           - GroupStandbyInstances
           - GroupTerminatingInstances
           - GroupTotalInstances
+
+  ScaleUpPolicy:
+    Type: AWS::AutoScaling::ScalingPolicy
+    Properties:
+      AdjustmentType: ChangeInCapacity
+      PolicyType: SimpleScaling
+      Cooldown: 120
+      AutoScalingGroupName: !Ref AutoscalingGroupAWSGT
+      ScalingAdjustment: !Ref ScalingUpAdjustment
