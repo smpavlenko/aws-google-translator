@@ -37,12 +37,12 @@ Parameters:
     Type: Number
     Default: 4
 
-  ScalingUpAdjustment:
+  ScalingOutAdjustment:
     Description: Number of machines to upscale
     Type: Number
     Default: 1
 
-  ScalingDownAdjustment:
+  ScalingInAdjustment:
     Description: Number of machines to downscale
     Type: Number
     Default: 1
@@ -131,20 +131,20 @@ Resources:
           - GroupTerminatingInstances
           - GroupTotalInstances
 
-  ScaleUpPolicy:
+  ScaleOutPolicy:
     Type: AWS::AutoScaling::ScalingPolicy
     Properties:
       AdjustmentType: ChangeInCapacity
       PolicyType: SimpleScaling
       Cooldown: 120
       AutoScalingGroupName: !Ref AutoscalingGroupAWSGT
-      ScalingAdjustment: !Ref ScalingUpAdjustment
+      ScalingAdjustment: !Ref ScalingOutAdjustment
 
-  ScaleDownPolicy:
+  ScaleInPolicy:
     Type: AWS::AutoScaling::ScalingPolicy
     Properties:
       AdjustmentType: ChangeInCapacity
       PolicyType: SimpleScaling
       Cooldown: 120
       AutoScalingGroupName: !Ref AutoscalingGroupAWSGT
-      ScalingAdjustment: !Ref ScalingDownAdjustment
+      ScalingAdjustment: !Ref ScalingInAdjustment
