@@ -42,6 +42,11 @@ Parameters:
     Type: Number
     Default: 1
 
+  ScalingDownAdjustment:
+    Description: Number of machines to downscale
+    Type: Number
+    Default: 1
+
 
 Resources:
   NodeRoleAWSGT:
@@ -134,3 +139,12 @@ Resources:
       Cooldown: 120
       AutoScalingGroupName: !Ref AutoscalingGroupAWSGT
       ScalingAdjustment: !Ref ScalingUpAdjustment
+
+  ScaleDownPolicy:
+    Type: AWS::AutoScaling::ScalingPolicy
+    Properties:
+      AdjustmentType: ChangeInCapacity
+      PolicyType: SimpleScaling
+      Cooldown: 120
+      AutoScalingGroupName: !Ref AutoscalingGroupAWSGT
+      ScalingAdjustment: !Ref ScalingDownAdjustment
