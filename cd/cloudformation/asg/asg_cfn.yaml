@@ -57,6 +57,11 @@ Parameters:
     Type: Number
     Default: 70
 
+  ScaleInThreshold:
+    Description: Average CPU to scale-in when usage is below
+    Type: Number
+    Default: 50
+
 Resources:
   NodeRoleAWSGT:
     Type: AWS::IAM::Role
@@ -175,3 +180,21 @@ Resources:
       EvaluationPeriods: '1'
       Threshold: !Ref ScaleOutThreshold
       ComparisonOperator: GreaterThanOrEqualToThreshold
+
+  CPUAlarmIn:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: "Scale-in if the average CPU < ${ScaleInThreshold} for ${ScalingPeriod}"
+      AlarmActions:
+      - Ref: ScaleInPolicy
+      MetricName: CPUUtilization
+      Namespace: AWS/EC2
+      Dimensions:
+        - Name: AutoScalingGroupName
+          Value:
+            Ref: AutoscalingGroupAWSGT
+      Statistic: Average
+      Period: !Ref ScalingPeriod
+      EvaluationPeriods: '1'
+      Threshold: !Ref ScaleInThreshold
+      ComparisonOperator: LessThanThreshold
