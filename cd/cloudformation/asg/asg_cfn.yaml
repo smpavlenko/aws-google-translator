@@ -38,7 +38,7 @@ Parameters:
     Default: 4
 
   ScalingOutAdjustment:
-    Description: Number of machines to upscale
+    Description: Number of machines to scale-out
     Type: Number
     Default: 1
 
@@ -47,6 +47,15 @@ Parameters:
     Type: Number
     Default: 1
 
+  ScalingPeriod:
+    Description: Period of Time to calculate scaling average on (multiples of 60)
+    Type: Number
+    Default: 600
+
+  ScaleOutThreshold:
+    Description: Average CPU Threschold to scale-out when exceeded
+    Type: Number
+    Default: 70
 
 Resources:
   NodeRoleAWSGT:
@@ -148,3 +157,21 @@ Resources:
       Cooldown: 120
       AutoScalingGroupName: !Ref AutoscalingGroupAWSGT
       ScalingAdjustment: !Ref ScalingInAdjustment
+
+  CPUAlarmOut:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: "Scale-out if the average CPU >= ${ScaleOutThreshold} for ${ScalingPeriod}"
+      AlarmActions:
+      - Ref: ScaleOutPolicy
+      MetricName: CPUUtilization
+      Namespace: AWS/EC2
+      Dimensions:
+        - Name: AutoScalingGroupName
+          Value:
+            Ref: AutoscalingGroupAWSGT
+      Statistic: Average
+      Period: !Ref ScalingPeriod
+      EvaluationPeriods: '1'
+      Threshold: !Ref ScaleOutThreshold
+      ComparisonOperator: GreaterThanOrEqualToThreshold
