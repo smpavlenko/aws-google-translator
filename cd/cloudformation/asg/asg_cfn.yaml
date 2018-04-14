@@ -166,7 +166,7 @@ Resources:
   CPUAlarmOut:
     Type: AWS::CloudWatch::Alarm
     Properties:
-      AlarmDescription: "Scale-out if the average CPU >= ${ScaleOutThreshold} for ${ScalingPeriod}"
+      AlarmDescription: !Sub "Scale-out if the average CPU >= ${ScaleOutThreshold} for ${ScalingPeriod}"
       AlarmActions:
       - Ref: ScaleOutPolicy
       MetricName: CPUUtilization
@@ -184,7 +184,7 @@ Resources:
   CPUAlarmIn:
     Type: AWS::CloudWatch::Alarm
     Properties:
-      AlarmDescription: "Scale-in if the average CPU < ${ScaleInThreshold} for ${ScalingPeriod}"
+      AlarmDescription: !Sub "Scale-in if the average CPU < ${ScaleInThreshold} for ${ScalingPeriod}"
       AlarmActions:
       - Ref: ScaleInPolicy
       MetricName: CPUUtilization
