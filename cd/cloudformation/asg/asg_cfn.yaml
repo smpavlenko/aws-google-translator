@@ -173,8 +173,7 @@ Resources:
       Namespace: AWS/EC2
       Dimensions:
         - Name: AutoScalingGroupName
-          Value:
-            Ref: AutoscalingGroupAWSGT
+          Value: !Ref AutoscalingGroupAWSGT
       Statistic: Average
       Period: !Ref ScalingPeriod
       EvaluationPeriods: '1'
@@ -191,8 +190,7 @@ Resources:
       Namespace: AWS/EC2
       Dimensions:
         - Name: AutoScalingGroupName
-          Value:
-            Ref: AutoscalingGroupAWSGT
+          Value: !Ref AutoscalingGroupAWSGT
       Statistic: Average
       Period: !Ref ScalingPeriod
       EvaluationPeriods: '1'
