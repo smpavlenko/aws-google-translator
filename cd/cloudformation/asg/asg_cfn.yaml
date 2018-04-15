@@ -196,3 +196,10 @@ Resources:
       EvaluationPeriods: '1'
       Threshold: !Ref ScaleInThreshold
       ComparisonOperator: LessThanThreshold
+
+  Outputs:
+    AutoscalingGroupAWSGT:
+      Description: AWS GT ASG
+      Value: !Ref AutoscalingGroupAWSGT
+      Export:
+        Name: !Sub "AWSGT-ASG"
