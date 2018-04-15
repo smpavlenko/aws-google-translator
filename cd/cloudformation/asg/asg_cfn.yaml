@@ -113,7 +113,7 @@ Resources:
         Count: !Ref InstanceCount
         Timeout: PT10M
     UpdatePolicy:
-      - AutoScalingReplacingUpdate:
+      AutoScalingReplacingUpdate:
         WillReplace: false
     Properties:
       AutoScalingGroupName: "aws-gt-asg"
@@ -127,8 +127,8 @@ Resources:
       HealthCheckType: ELB
       HealthCheckGracePeriod: 300
       VPCZoneIdentifier:
-        - !ImportValue: "AWSGT-PublicSubnet0"
-        - !ImportValue: "AWSGT-PublicSubnet1"
+        - !ImportValue "AWSGT-PublicSubnet0"
+        - !ImportValue "AWSGT-PublicSubnet1"
       LaunchConfigurationName: !Ref LaunchConfigAWSGT
       MinSize: !Ref MinInstancesCount
       MaxSize: !Ref MaxInstancesCount
@@ -197,9 +197,9 @@ Resources:
       Threshold: !Ref ScaleInThreshold
       ComparisonOperator: LessThanThreshold
 
-  Outputs:
-    AutoscalingGroupAWSGT:
-      Description: AWS GT ASG
-      Value: !Ref AutoscalingGroupAWSGT
-      Export:
-        Name: !Sub "AWSGT-ASG"
+Outputs:
+  AutoscalingGroupAWSGT:
+    Description: AWS GT ASG
+    Value: !Ref AutoscalingGroupAWSGT
+    Export:
+      Name: !Sub "AWSGT-ASG"
