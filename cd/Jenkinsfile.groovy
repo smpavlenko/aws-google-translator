@@ -23,5 +23,18 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                sh "mvn clean install -DuseCommitHash -DskipTests -T 1C"
+            }
+        }
+
+        stage("Unit tests") {
+            steps {
+                sh "mvn test -Dmaven.test.failure.ignore=true -T 1C"
+            }
+        }
+
+
     }
 }
