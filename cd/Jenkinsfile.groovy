@@ -73,7 +73,7 @@ pipeline {
                         VPC_STACK_NAME = sh returnStdout: true, script: "aws cloudformation describe-stacks --output json | jq -r '.Stacks[].StackName' | grep \"$VPC_STACK_NAME\" | tr -d '\040\011\012\015'"
                         if (VPC_STACK_NAME == null || VPC_STACK_NAME == '') {
                             cfnValidate(file: "${VPC_TEMPLATE_PATH}")
-                            cfnUpdate(stack: "${VPC_STACK_NAME}", file: "${VPC_TEMPLATE_PATH}", paramsFile: "${VPC_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-vpc", "Project=AWSGT"])
+                            cfnUpdate(stack: "${VPC_STACK_NAME}", file: "${VPC_TEMPLATE_PATH}", paramsFile: "${VPC_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=$VPC_STACK_NAME", "Project=AWSGT"])
                         }
                     }
                 }
@@ -88,7 +88,7 @@ pipeline {
                         S3_STACK_NAME = sh returnStdout: true, script: "aws cloudformation describe-stacks --output json | jq -r '.Stacks[].StackName' | grep \"$S3_STACK_NAME\" | tr -d '\040\011\012\015'"
                         if (S3_STACK_NAME == null || S3_STACK_NAME == '') {
                             cfnValidate(file: "${S3_TEMPLATE_PATH}")
-                            cfnUpdate(stack: "${S3_STACK_NAME}", file: "${S3_TEMPLATE_PATH}", paramsFile: "${S3_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-s3", "Project=AWSGT"])
+                            cfnUpdate(stack: "${S3_STACK_NAME}", file: "${S3_TEMPLATE_PATH}", paramsFile: "${S3_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=$S3_STACK_NAME", "Project=AWSGT"])
                         }
                     }
                 }
@@ -103,7 +103,7 @@ pipeline {
                         ELB_STACK_NAME = sh returnStdout: true, script: "aws cloudformation describe-stacks --output json | jq -r '.Stacks[].StackName' | grep \"$ELB_STACK_NAME\" | tr -d '\040\011\012\015'"
                         if (ELB_STACK_NAME == null || ELB_STACK_NAME == '') {
                             cfnValidate(file: "${ELB_TEMPLATE_PATH}")
-                            cfnUpdate(stack: "${ELB_STACK_NAME}", file: "${ELB_TEMPLATE_PATH}", paramsFile: "${ELB_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-elb", "Project=AWSGT"])
+                            cfnUpdate(stack: "${ELB_STACK_NAME}", file: "${ELB_TEMPLATE_PATH}", paramsFile: "${ELB_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=$ELB_STACK_NAME", "Project=AWSGT"])
                         }
                     }
                 }
