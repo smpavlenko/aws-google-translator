@@ -56,6 +56,7 @@ pipeline {
                     env.ASG_TEMPLATE_PATH = "cd/cloudformation/asg/asg_cfn.yaml"
 
                     env.VPC_STACK_NAME = "aws-gt-vpc"
+                    env.S3_STACK_NAME = "aws-gt-s3"
 
                     env.AWS_PARTITION = "aws"
                     env.CF_ROLE = "arn:${AWS_PARTITION}:iam::${AWS_ACCOUNT}:role/${CF_ROLE}"
@@ -63,7 +64,7 @@ pipeline {
             }
         }
 
-        stage('Update VPC CloudFormation') {
+        stage('Create VPC CloudFormation') {
             steps {
                 script {
                     //noinspection GroovyAssignabilityCheck
@@ -72,6 +73,21 @@ pipeline {
                         if (VPC_STACK_NAME == null || VPC_STACK_NAME == '') {
                             cfnValidate(file: "${VPC_TEMPLATE_PATH}")
                             cfnUpdate(stack: "${VPC_STACK_NAME}", file: "${VPC_TEMPLATE_PATH}", paramsFile: "${VPC_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-vpc", "Project=AWSGT"])
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Create S3 CloudFormation') {
+            steps {
+                script {
+                    //noinspection GroovyAssignabilityCheck
+                    withAWS(role: "${JENKINS_ROLE}", roleAccount: "${AWS_ACCOUNT}", region: "${REGION}") {
+                        S3_STACK_NAME = sh returnStdout: true, script: "aws cloudformation describe-stacks --output json | jq -r '.Stacks[].StackName' | grep \"$S3_STACK_NAME\" | tr -d '\040\011\012\015'"
+                        if (S3_STACK_NAME == null || S3_STACK_NAME == '') {
+                            cfnValidate(file: "${S3_TEMPLATE_PATH}")
+                            cfnUpdate(stack: "${S3_STACK_NAME}", file: "${S3_TEMPLATE_PATH}", paramsFile: "${S3_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-vpc", "Project=AWSGT"])
                         }
                     }
                 }
