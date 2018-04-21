@@ -68,8 +68,11 @@ pipeline {
                 script {
                     //noinspection GroovyAssignabilityCheck
                     withAWS(role: "${JENKINS_ROLE}", roleAccount: "${AWS_ACCOUNT}", region: "${REGION}") {
-                        cfnValidate(file: "${VPC_TEMPLATE_PATH}")
-                        cfnUpdate(stack: "${VPC_STACK_NAME}", file: "${VPC_TEMPLATE_PATH}", paramsFile: "${VPC_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-vpc", "Project=AWSGT"])
+                        VPC_STACK_NAME = sh returnStdout: true, script: "aws cloudformation describe-stacks --output json | jq -r '.Stacks[].StackName' | grep \"$VPC_STACK_NAME\" | tr -d '\040\011\012\015'"
+                        if (VPC_STACK_NAME == null || VPC_STACK_NAME == '') {
+                            cfnValidate(file: "${VPC_TEMPLATE_PATH}")
+                            cfnUpdate(stack: "${VPC_STACK_NAME}", file: "${VPC_TEMPLATE_PATH}", paramsFile: "${VPC_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-vpc", "Project=AWSGT"])
+                        }
                     }
                 }
             }
