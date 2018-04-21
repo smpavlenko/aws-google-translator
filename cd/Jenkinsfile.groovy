@@ -57,6 +57,7 @@ pipeline {
 
                     env.VPC_STACK_NAME = "aws-gt-vpc"
                     env.S3_STACK_NAME = "aws-gt-s3"
+                    env.ELB_STACK_NAME = "aws-gt-elb"
 
                     env.AWS_PARTITION = "aws"
                     env.CF_ROLE = "arn:${AWS_PARTITION}:iam::${AWS_ACCOUNT}:role/${CF_ROLE}"
@@ -87,7 +88,22 @@ pipeline {
                         S3_STACK_NAME = sh returnStdout: true, script: "aws cloudformation describe-stacks --output json | jq -r '.Stacks[].StackName' | grep \"$S3_STACK_NAME\" | tr -d '\040\011\012\015'"
                         if (S3_STACK_NAME == null || S3_STACK_NAME == '') {
                             cfnValidate(file: "${S3_TEMPLATE_PATH}")
-                            cfnUpdate(stack: "${S3_STACK_NAME}", file: "${S3_TEMPLATE_PATH}", paramsFile: "${S3_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-vpc", "Project=AWSGT"])
+                            cfnUpdate(stack: "${S3_STACK_NAME}", file: "${S3_TEMPLATE_PATH}", paramsFile: "${S3_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-s3", "Project=AWSGT"])
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Create ELB CloudFormation') {
+            steps {
+                script {
+                    //noinspection GroovyAssignabilityCheck
+                    withAWS(role: "${JENKINS_ROLE}", roleAccount: "${AWS_ACCOUNT}", region: "${REGION}") {
+                        ELB_STACK_NAME = sh returnStdout: true, script: "aws cloudformation describe-stacks --output json | jq -r '.Stacks[].StackName' | grep \"$ELB_STACK_NAME\" | tr -d '\040\011\012\015'"
+                        if (ELB_STACK_NAME == null || ELB_STACK_NAME == '') {
+                            cfnValidate(file: "${ELB_TEMPLATE_PATH}")
+                            cfnUpdate(stack: "${ELB_STACK_NAME}", file: "${ELB_TEMPLATE_PATH}", paramsFile: "${ELB_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=aws-gt-elb", "Project=AWSGT"])
                         }
                     }
                 }
