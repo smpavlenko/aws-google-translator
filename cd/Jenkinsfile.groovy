@@ -37,4 +37,26 @@ pipeline {
 
 
     }
+
+    post {
+        always {
+            junit '**/target/surefire-reports/*.xml'
+            junit '**/target/failsafe-reports/*.xml'
+        }
+        success {
+            script {
+                currentBuild.result = 'SUCCESS'
+            }
+        }
+        failure {
+            script {
+                currentBuild.result = 'FAILURE'
+            }
+        }
+        unstable {
+            script {
+                currentBuild.result = 'UNSTABLE'
+            }
+        }
+    }
 }
