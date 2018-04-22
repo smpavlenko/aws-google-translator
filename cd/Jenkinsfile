@@ -110,6 +110,27 @@ pipeline {
             }
         }
 
+        stage('Build AMI') {
+            steps {
+                //noinspection GroovyAssignabilityCheck
+                withAWS(role: "${JENKINS_ROLE}", roleAccount: "${AWS_ACCOUNT}", region: "${REGION}") {
+                    dir('cd/packer') {
+                        script {
+                            VPC_ID = sh returnStdout: true, script: "aws ec2 describe-vpcs --output json --filters Name=tag:Project,Values=AWSGT | jq -r .Vpcs[0].VpcId | tr -d '\040\011\012\015'"
+                            SUBNET_ID = sh returnStdout: true, script: "aws ec2 describe-subnets --filters Name=vpc-id,Values=${VPC_ID} --output json | jq -r .Subnets[0].SubnetId | tr -d '\040\011\012\015'"
+
+                            sh "packer build -color=false -machine-readable -only=awsgt-ami -var 'vpc_id=${VPC_ID}' -var 'subnet_id=${SUBNET_ID}' awsgt-ami.json | tee build.log"
+                            AMI_ID = sh returnStdout: true, script: "cat packer-manifest.json | jq -r '.builds[] | select (.name==awsgt-ami) | .artifact_id'"
+                            if (AMI_ID == null || AMI_ID == "") {
+                                error("AMI ID empty, build failed")
+                            }
+                        }
+                        echo "Created new AMI: ${AMI_ID}"
+                    }
+                }
+            }
+        }
+
 
     }
 
