@@ -58,6 +58,7 @@ pipeline {
                     env.VPC_STACK_NAME = "aws-gt-vpc"
                     env.S3_STACK_NAME = "aws-gt-s3"
                     env.ELB_STACK_NAME = "aws-gt-elb"
+                    env.ASG_STACK_NAME = "aws-gt-asg"
 
                     env.AWS_PARTITION = "aws"
                     env.CF_ROLE = "arn:${AWS_PARTITION}:iam::${AWS_ACCOUNT}:role/${CF_ROLE}"
@@ -131,6 +132,19 @@ pipeline {
             }
         }
 
+        stage('Create ASG CloudFormation') {
+            steps {
+                script {
+                    //noinspection GroovyAssignabilityCheck
+                    withAWS(role: "${JENKINS_ROLE}", roleAccount: "${AWS_ACCOUNT}", region: "${REGION}") {
+                        sh 'sed -i "s/AMI_ID/${AMI_ID}/g" ${ASG_PARAMS_PATH}'
+
+                        cfnValidate(file: "${ASG_TEMPLATE_PATH}")
+                        cfnUpdate(stack: "${ASG_STACK_NAME}", file: "${ASG_TEMPLATE_PATH}", paramsFile: "${ASG_PARAMS_PATH}", roleArn: "${CF_ROLE}", tags: ["Name=$ASG_STACK_NAME", "Project=AWSGT"])
+                    }
+                }
+            }
+        }
 
     }
 
