@@ -13,6 +13,8 @@ This project is used as a preparation for AWS Certified Solution Architect exam.
 - Packer with Ansible for AMI building
 - Jenkins Pipeline script
 
+<p><img src="doc/Infrastructure.png"></p>
+
 **Building and starting locally**
 1. Build
 
