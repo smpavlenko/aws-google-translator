@@ -32,3 +32,4 @@ This project is used as a preparation for AWS Certified Solution Architect exam.
 1. Use Jenkins
 
         cd/Jenkinsfile
+It's necessary to provide **AWS_ACCOUNT**, **REGION**, **CF_ROLE** and **JENKINS_ROLE** parameters.
